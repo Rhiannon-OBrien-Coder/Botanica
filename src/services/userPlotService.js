@@ -2,6 +2,15 @@ import axios from "axios";
 const BACKEND_URL = import.meta.env.VITE_EXPRESS_BACKEND_URL;
 const BASE_URL = `${BACKEND_URL}/user-plots`;
 
+const index = async () => {
+  try {
+    const res = await axios.get(BASE_URL);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const create = async (formData) => {
     try {
       const res = await axios.post(BASE_URL, formData, {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}});
@@ -38,4 +47,4 @@ const deletePlant = async (userPlotId) => {
         }
 };
 
-export { create, show, update, deletePlant }
+export { index, create, show, update, deletePlant }
