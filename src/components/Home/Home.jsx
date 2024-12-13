@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom"
 
 const Home = () => {
   return (
@@ -8,12 +9,12 @@ const Home = () => {
         Earn your Green Cursor on Botanica! Buy and plant on your very on virtual plot.
       </p>
       <div>
-        <a href="/login">
-          Sign In
-        </a>
-        <a href="/signup">
-          Get Started
-        </a>
+        <button>
+          <Link to={'/login'}>Login</Link>
+        </button>
+        <button>
+          <Link to={'/signup'}>Create Account</Link>
+        </button>
       </div>
     </>
   );

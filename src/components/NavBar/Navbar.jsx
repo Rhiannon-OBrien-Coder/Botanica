@@ -1,6 +1,13 @@
 import { Link } from "react-router-dom"
+import * as userService from '../../services/userService'
 
 const NavBar = () => {
+  const handleSignout = () => {
+    userService.signout()
+    props.setUser(null)
+    props.setUserData(null)
+  }
+
   return (
     <>
       <nav>
@@ -22,9 +29,14 @@ const NavBar = () => {
               </li>
             </ul>
             {localStorage.token ? (
-              <button>
-                <Link to={'/account'} className="nav-link">Account</Link>
-              </button>
+              <>
+                <button>
+                  <Link to={'/profile'} className="nav-link">Account</Link>
+                </button>
+                <button>
+                  <Link to={'/'} className="nav-link" onClick={handleSignout}>Sign Out</Link>
+                </button>
+              </>
             ) : (
               <button>
                 <Link to={'/login'} className="nav-link">Login</Link>
