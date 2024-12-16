@@ -4,6 +4,7 @@ const BASE_URL = `${BACKEND_URL}/auth`;
 
 const signup = async (formData) => {
   try {
+    console.log(formData, BASE_URL)
     const res = await axios.post(`${BASE_URL}/signup`, formData)
     if (res.data.error) {
         throw new Error(res.data.error)
