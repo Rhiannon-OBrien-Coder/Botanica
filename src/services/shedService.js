@@ -29,4 +29,4 @@ const deleteShed = async (shedId) => {
         }
 };
 
-export { create, show, update, deleteShed }
+export { show, update, deleteShed }
