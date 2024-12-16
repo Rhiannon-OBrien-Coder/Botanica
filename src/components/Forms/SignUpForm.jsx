@@ -25,7 +25,6 @@ const SignUpForm = (props) => {
     try {
       const newUserResponse = await userService.signup(formData)
       const userData = await userService.getUserData(newUserResponse.id)
-      const newShed = await shedService.create(newUserResponse.id)
       props.setUser(newUserResponse.user)
       props.setUserData(userData)
       navigate('/')
