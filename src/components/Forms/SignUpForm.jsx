@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import * as userService from '../../services/userService'
+import * as shedService from '../../services/shedService'
 
 const SignUpForm = (props) => {
   const navigate = useNavigate();
@@ -24,6 +25,7 @@ const SignUpForm = (props) => {
     try {
       const newUserResponse = await userService.signup(formData)
       const userData = await userService.getUserData(newUserResponse.id)
+      const newShed = await shedService.create(newUserResponse.id)
       props.setUser(newUserResponse.user)
       props.setUserData(userData)
       navigate('/')
