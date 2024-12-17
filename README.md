@@ -3,8 +3,7 @@ Earn your green cursor!
 
 When you join Botanica, you are given a starting amount of money to spend on seeds and a virtual plot of land to plant them on. Plants grow in in-game-time based on how you care for them and their unique needs! When it's time to harvest, you can sell your crops and flowers for money to buy new seeds and new plots of land.
 
-<img width="1108" alt="Screenshot 2024-12-16 at 11 25 15 PM" src="https://github.com/user-attachments/assets/3136a473-dbe6-4c91-9661-b930a91e0611" />
-
+<img width="1279" alt="Screenshot 2024-12-17 at 11 05 24 AM" src="https://github.com/user-attachments/assets/9c1f71a9-62ed-40c7-b51a-b88183c45f69" />
 
 Getting started:
 
