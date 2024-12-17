@@ -45,8 +45,6 @@ function App() {
         <Route path='/virtual-plot' element={<VirtualPlot/>}/>
         <Route path='/profile' element={<Profile/>}/>
         <Route path='/FAQ' element={<FAQ/>}/>
-        {/* <Route path='/shed' element={<Shed/>}/>
-        <Route path='/plants/*' element={<Plants/>}/> */}
       </Routes>
     </>
   )
