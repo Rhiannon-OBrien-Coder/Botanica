@@ -4,7 +4,7 @@ import { useState } from "react"
 const PlotChosen = (props) => {
     const [isFormVisible, setIsFormVisible] = useState(false)
     const [formData, setFormData] = useState({
-        name: `${props.plot.name}`,
+        name: ``,
         type: `${props.plot.type}`
       })
 
@@ -40,7 +40,7 @@ const PlotChosen = (props) => {
             {isFormVisible ? 
             <form>
                 <label htmlFor="name">Name:</label>
-                <input defaultValue={props.plot.name} onChange={handleChange}></input>
+                <input type="name" name="name" id="name" defaultValue={props.plot.name} onChange={handleChange}></input>
                 <p>Plot type: {props.plot.type}</p>
                 <button onClick={handleSubmit}>Save Changes</button>
                 <button onClick={handleToggle}>Cancel</button>
