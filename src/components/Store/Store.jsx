@@ -4,8 +4,11 @@ import { Link } from "react-router-dom";
 import * as plotOptionService from "../../services/plotOptionService";
 import * as seedService from "../../services/seedService"
 import * as plantService from "../../services/plantService"
+import * as userPlotService from "../../services/userPlotService"
+import PlotToBuy from "./PlotToBuy";
+import SeedToBuy from "./SeedToBuy";
 
-const Store = (props) => {
+const Store = () => {
   const [plotOptionsList, setPlotOptionsList] = useState([])
   const [seedList, setSeedList] = useState([])
   
@@ -40,10 +43,17 @@ const Store = (props) => {
   }, []);
 
   const handleSeedBuy = async (seed) => {
-    const gardener = props.userData
     const type = seed.id
     const name = seed.name
-    const newPlant = await plantService.create(gardener, type, name, shed)
+    const newPlant = await plantService.create(type, name)
+    console.log(newPlant)
+  }
+
+  const handlePlotBuy = async (plot) => {
+    const type = plot.id
+    const name = plot.name
+    const newUserPlot = await userPlotService.create(type, name)
+    console.log(newUserPlot)
   }
 
   return (
@@ -52,25 +62,12 @@ const Store = (props) => {
       {localStorage.token ? (
             <>
               <h2>Plot Options:</h2>
-              {plotOptionsList.map((plotOption) => (
-                <div key={plotOption.id} className="store-item">
-                  <h3>{plotOption.name}</h3>
-                  <h3>{plotOption.season}</h3>
-                  <p>{plotOption.description}</p>
-                  <h3>{plotOption.price}</h3>
-                  <button onClick={handlePlotBuy}>Buy</button>
-                </div>
+              {plotOptionsList.map((plot) => (
+                <PlotToBuy key={plot.id} plot = {plot} handlePlotBuy = {handlePlotBuy}/>
               ))}
               <h2>Seeds:</h2>
               {seedList.map((seed) => (
-                <div key={seed.id} className="store-item">
-                  <h3>{seed.name}</h3>
-                  <h3>{seed.season}</h3>
-                  <p>{seed.description}</p>
-                  <h3>{seed.growth_period}</h3>
-                  <h3>{seed.price}</h3>
-                  <button onClick={handleSeedBuy}>Buy</button>
-                </div>
+                <SeedToBuy key = {seed.id} seed = {seed} handleSeedBuy = {handleSeedBuy}/>
               ))}
             </>
             ) : (

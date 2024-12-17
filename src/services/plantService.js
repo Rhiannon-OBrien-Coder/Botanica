@@ -1,10 +1,11 @@
 import axios from "axios";
 const BACKEND_URL = import.meta.env.VITE_BACK_END_SERVER_URL;
-const BASE_URL = `${BACKEND_URL}/plant`;
+const BASE_URL = `${BACKEND_URL}/plants`;
 
-const create = async (formData) => {
+const create = async (type, name) => {
     try {
-      const res = await axios.post(BASE_URL, formData, {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}});
+      const toSend = {"type": type, "name": name}
+      const res = await axios.post(BASE_URL, toSend, {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}});
       return res.data;
     } catch (error) {
       console.log(error);

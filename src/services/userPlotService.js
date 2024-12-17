@@ -11,9 +11,10 @@ const index = async () => {
   }
 };
 
-const create = async (formData) => {
+const create = async (type, name) => {
     try {
-      const res = await axios.post(BASE_URL, formData, {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}});
+      const toSend = {"type": type, "name": name}
+      const res = await axios.post(BASE_URL, toSend, {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}});
       return res.data;
     } catch (error) {
       console.log(error);
