@@ -11,12 +11,14 @@ Getting started:
 - https://trello.com/b/v8iBOFxH/botanica, 
 - https://github.com/Rhiannon-OBrien-Coder/Botanica-Backend
 
-Attributions: This section should include links to any external resources (such as libraries or assets) you used to develop your application that require attribution. You can exclude this section if it does not apply to your application.
+Attributions:
 - geeksforgeeks.org
 - shecodes.io
 - w3schools.com
 - stackoverflow
 - google ai
+- https://hevodata.com/learn/postgresql-dump-import/
+- https://www.geeksforgeeks.org/how-to-install-flask-cors-in-python/
 
 Technologies used:
 
