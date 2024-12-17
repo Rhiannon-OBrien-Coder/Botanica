@@ -4,7 +4,7 @@ const BASE_URL = `${BACKEND_URL}/user-plots`;
 
 const index = async () => {
   try {
-    const res = await axios.get(BASE_URL);
+    const res = await axios.get(BASE_URL, {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}});
     return res.data;
   } catch (error) {
     console.log(error);
@@ -39,7 +39,7 @@ const create = async (type, name) => {
     }
   };
 
-const deletePlant = async (userPlotId) => {
+const deletePlot = async (userPlotId) => {
     try {
         const res = await axios.delete(`${BASE_URL}/${userPlotId}`, {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}});
         return res.data;
@@ -48,4 +48,4 @@ const deletePlant = async (userPlotId) => {
         }
 };
 
-export { index, create, show, update, deletePlant }
+export { index, create, show, update, deletePlot }

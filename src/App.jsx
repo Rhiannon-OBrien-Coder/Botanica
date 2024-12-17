@@ -17,7 +17,6 @@ import * as shedService from "./services/shedService";
 function App() {
   const [user, setUser] = useState(userService.getUser());
   const [userData, setUserData] = useState();
-  const [shed, setShed] = useState()
 
   useEffect(() => {
     const getUserData = async (id) => {
@@ -32,20 +31,6 @@ function App() {
       }
     };
     user ? getUserData(user._id) : setUserData({});
-  }, []);
-
-  useEffect(() => {
-    const getShed = async (id) => {
-      try {
-        const shedData = await shedService.show(id);
-        if (shedData.error) {
-          throw new Error(shedData.error);
-        }
-        setShed(shedData);
-      } catch (error) {
-        console.log("Error fetching shed:", error);
-      }
-    };
   }, []);
 
   return (

@@ -43,17 +43,32 @@ const Store = () => {
   }, []);
 
   const handleSeedBuy = async (seed) => {
-    const type = seed.id
-    const name = seed.name
-    const newPlant = await plantService.create(type, name)
-    console.log(newPlant)
+    try {
+      const type = seed.id
+      const name = seed.name
+      const newPlant = await plantService.create(type, name)
+      if (newPlant.error) {
+        throw new Error(newPlant.error);
+      }
+      console.log(newPlant)
+    } catch (error) {
+      console.log("Error buying seed:", error);
+    }
   }
 
   const handlePlotBuy = async (plot) => {
-    const type = plot.id
-    const name = plot.name
-    const newUserPlot = await userPlotService.create(type, name)
-    console.log(newUserPlot)
+    try {
+      const type = plot.id
+      const name = plot.name
+      const newUserPlot = await userPlotService.create(type, name)
+      if (newUserPlot.error) {
+        throw new Error(newUserPlot.error);
+      }
+      alert("Successfully created a new plot!")
+      console.log(newUserPlot)
+    } catch (error) {
+      console.log("Error buying plot:", error);
+    }
   }
 
   return (
