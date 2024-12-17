@@ -15,14 +15,13 @@ const Store = () => {
         if (plotOptions.error) {
           throw new Error(plotOptions.error);
         }
-        setPlotOptionsList(plotOptions);
+        setPlotOptionsList(plotOptions.plot_options);
       } catch (error) {
         console.log("Error fetching plotOptions:", error);
       }
     };
     plotOptionIndex();
-    console.log(plotOptionsList)
-  }, [plotOption]);
+  }, []);
 
   useEffect(() => {
     const seedIndex = async () => {
@@ -31,13 +30,13 @@ const Store = () => {
         if (seeds.error) {
           throw new Error(seeds.error);
         }
-        setSeedList(seeds);
+        setSeedList(seeds.seeds);
       } catch (error) {
         console.log("Error fetching seeds:", error);
       }
     };
     seedIndex();
-  }, [seed]);
+  }, []);
 
   return (
     <>
