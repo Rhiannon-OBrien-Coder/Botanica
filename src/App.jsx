@@ -11,11 +11,13 @@ import VirtualGarden from "./components/VirtualGarden/VirtualGarden"
 import VirtualPlot from "./components/VirtualPlot/VirtualPlot";
 import FAQ from "./components/FAQ/FAQ"
 import * as userService from "./services/userService";
+import * as shedService from "./services/shedService";
 
 
 function App() {
   const [user, setUser] = useState(userService.getUser());
   const [userData, setUserData] = useState();
+  const [shed, setShed] = useState()
 
   useEffect(() => {
     const getUserData = async (id) => {
@@ -32,6 +34,20 @@ function App() {
     user ? getUserData(user._id) : setUserData({});
   }, []);
 
+  useEffect(() => {
+    const getShed = async (id) => {
+      try {
+        const shedData = await shedService.show(id);
+        if (shedData.error) {
+          throw new Error(shedData.error);
+        }
+        setShed(shedData);
+      } catch (error) {
+        console.log("Error fetching shed:", error);
+      }
+    };
+  }, []);
+
   return (
     <>
       <NavBar user={user} />
@@ -39,7 +55,7 @@ function App() {
         <Route path='/' element={<Home/>}/>
         <Route path="/login" element={ <LoginForm setUser={setUser} setUserData={setUserData}/>}/>
         <Route path="/signup" element={ <SignUpForm setUser={setUser} setUserData={setUserData} />}/>
-        <Route path='/store' element={<Store/>}/>
+        <Route path='/store' element={<Store userData={userData}/>}/>
         <Route path='/virtual-garden' element={<VirtualGarden/>}/>
         <Route path='/virtual-plot' element={<VirtualPlot/>}/>
         <Route path='/profile' element={<Profile/>}/>

@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import * as userService from '../../services/userService'
+import * as shedService from '../../services/shedService'
 
 const LoginForm = (props) => {
   const navigate = useNavigate();
@@ -26,8 +27,9 @@ const LoginForm = (props) => {
       const user = await userService.signin(formData)
       console.log(user)
       const userData = await userService.getUserData(user.id)
-
-      props.setUser(user);
+      const shedData = await shedService.show()
+      props.setShed(shedData)
+      props.setUser(user)
       props.setUserData(userData)
       if (user) {
         navigate('/');

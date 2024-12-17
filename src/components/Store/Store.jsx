@@ -3,8 +3,9 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import * as plotOptionService from "../../services/plotOptionService";
 import * as seedService from "../../services/seedService"
+import * as plantService from "../../services/plantService"
 
-const Store = () => {
+const Store = (props) => {
   const [plotOptionsList, setPlotOptionsList] = useState([])
   const [seedList, setSeedList] = useState([])
   
@@ -38,6 +39,13 @@ const Store = () => {
     seedIndex();
   }, []);
 
+  const handleSeedBuy = async (seed) => {
+    const gardener = props.userData
+    const type = seed.id
+    const name = seed.name
+    const newPlant = await plantService.create(gardener, type, name, shed)
+  }
+
   return (
     <>
       <h1>Store</h1>
@@ -50,7 +58,7 @@ const Store = () => {
                   <h3>{plotOption.season}</h3>
                   <p>{plotOption.description}</p>
                   <h3>{plotOption.price}</h3>
-                  <button>Buy</button>
+                  <button onClick={handlePlotBuy}>Buy</button>
                 </div>
               ))}
               <h2>Seeds:</h2>
@@ -61,7 +69,7 @@ const Store = () => {
                   <p>{seed.description}</p>
                   <h3>{seed.growth_period}</h3>
                   <h3>{seed.price}</h3>
-                  <button>Buy</button>
+                  <button onClick={handleSeedBuy}>Buy</button>
                 </div>
               ))}
             </>
