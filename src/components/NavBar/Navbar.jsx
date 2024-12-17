@@ -12,9 +12,9 @@ const NavBar = () => {
     <>
       <nav>
         <div>
-          <p>Botanica</p>
           <div>
             <ul>
+              <li>Botanica</li>
               <li>
                 <Link to={'/'} className="nav-link">Home</Link>
               </li>
@@ -27,7 +27,6 @@ const NavBar = () => {
               <li>
                 <Link to={'/faq'} className="nav-link">FAQ</Link>
               </li>
-            </ul>
             {localStorage.token ? (
               <>
                 <button>
@@ -42,6 +41,7 @@ const NavBar = () => {
                 <Link to={'/login'} className="nav-link">Login</Link>
               </button>
             )}
+            </ul>
           </div>
         </div>
       </nav>
