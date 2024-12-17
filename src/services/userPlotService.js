@@ -30,7 +30,7 @@ const create = async (type, name) => {
     }
   };
 
-  const update = async (formData, userPlotId) => {
+  const update = async (userPlotId, formData) => {
     try {
       const res = await axios.put(`${BASE_URL}/${userPlotId}`, formData, {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}});
       return res.data;

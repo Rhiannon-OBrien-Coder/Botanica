@@ -35,13 +35,26 @@ const VirtualGarden = () => {
     }
   }
 
+  const handleUpdate = async(id, formData) => {
+    try {
+      const updatedPlot = await plotService.update(id, formData)
+      if (updatedPlot.error) {
+        throw new Error(deletedPlot.error);
+      }
+      console.log(updatedPlot)
+      alert("Plot updated")
+    } catch (error) {
+      console.log("Error updating plot:", error);
+    }
+  }
+
   return (
     <>
       <h1>Virtual Garden</h1>
       {localStorage.token ? (
             <>
               {plotList.map((plot) => (
-                <PlotChosen key={plot.id} plot={plot} handleDelete={handleDelete}/>
+                <PlotChosen key={plot.id} plot={plot} handleDelete={handleDelete} handleUpdate={handleUpdate}/>
               ))}
             </>
             ) : (
