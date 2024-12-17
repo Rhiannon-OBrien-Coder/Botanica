@@ -21,7 +21,7 @@ const VirtualGarden = () => {
       };
       plotIndex();
     }, []);
-
+1
   const handleDelete = async(id) => {
     try {
       const deletedPlot = await plotService.deletePlot(id)
