@@ -29,17 +29,11 @@ const NavBar = () => {
               </li>
             {localStorage.token ? (
               <>
-                <button>
-                  <Link to={'/profile'} className="nav-link">Account</Link>
-                </button>
-                <button>
-                  <Link to={'/'} className="nav-link" onClick={handleSignout}>Sign Out</Link>
-                </button>
+                <Link to={'/profile'}><button>Account</button></Link>
+                <Link to={'/'}onClick={handleSignout}><button>Sign Out</button></Link>
               </>
             ) : (
-              <button>
-                <Link to={'/login'} className="nav-link">Login</Link>
-              </button>
+                <Link to={'/login'} className="nav-link"><button>Login</button></Link>
             )}
             </ul>
           </div>

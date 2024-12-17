@@ -1,7 +1,7 @@
 body {
   text-align: center;
-  background-color: rgb(122, 135, 95);
-  color: rgb(68, 49, 39);
+  background-color: #606c35;
+  color: #263614;
   display: flex;
   justify-content: center;
   margin-right: 100px;
@@ -9,15 +9,15 @@ body {
 }
 
 a:link {
-  color: rgb(44, 103, 72);
+  color: #bd6d22;
 }
 
 a:hover {
-  color:rgb(68, 49, 39);
+  color:#fff1cd;
 }
 
 a:visited {
-  color: rgb(44, 103, 72);
+  color: #bd6d22;
 }
 
 ul {
@@ -26,7 +26,21 @@ ul {
   justify-content: space-between;
 }
 
+.nav-link {
+  text-decoration: underline;
+  font-weight: bolder;
+  color: #bd6d22;
+}
+
 button {
-  background-color: rgb(124, 193, 156);
+  background-color: #a5b569;
   padding: 20px;
 }
+
+/* #a5b569
+#263614
+#fff1cd
+#f7d379
+#bd6d22
+#a68f74
+#606c35 */
